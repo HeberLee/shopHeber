@@ -8,11 +8,17 @@
 	}
 
 	function insert($table,$array){
-		$keys = join(",",array_keys($array));
-		$vals = "'".join(",",array_values($array))."'";
-		$sql = "insert {$table}({$keys}) values({$vals})";
-		mysql_query($sql);
-		return mysql_insert_id();
+			foreach ($array as $key => $value){
+				$value = mysql_real_escape_string($value);
+				$keyArr[] = "`".$key."`";
+				$valueArr[] = "'".$value."'";
+			}
+
+			$keys = implode(",", $keyArr);
+			$values = implode(",", $valueArr);
+			$sql = "insert into ".$table."(".$keys.")values (".$values.")";
+			mysql_query($sql);
+			return mysql_insert_id();
 	}
 
 	function fetchOne($sql,$result_type=MYSQL_ASSOC){

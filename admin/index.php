@@ -78,7 +78,7 @@ checkLogined();
                     <li>
                         <h3><span onclick="show('menu5','change5')" id="change5">+</span>管理员管理</h3>
                         <dl id="menu5" style="display:none;">
-                        	<dd><a href="addAdmin.php" target="mainFrame">添加管理员</a></dd>
+                        	<dd><a href="addAdmin.php?act=addAdmin" target="mainFrame">添加管理员</a></dd>
                             <dd><a href="listAdmin.php" target="mainFrame">管理员列表</a></dd>
                         </dl>
                     </li>
