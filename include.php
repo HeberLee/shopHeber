@@ -7,7 +7,8 @@
 	require_once "images.func.php";
 	require_once "common.func.php";
 	require_once "string.func.php";
-//	require_once "page.func.php";
 	require_once "config.php";
 	require_once "admin.inc.php";
+	require_once "page.func.php";
+	require_once "cate.inc.php";
 	connect();

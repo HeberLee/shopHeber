@@ -30,7 +30,7 @@
 	function fetchAll($sql,$result_type=MYSQL_ASSOC){
 		$result = mysql_query($sql);
 		while($row = mysql_fetch_array($result,$result_type)){
-			$row = mysql_fetch_array($result,$result_type);
+			
 			$rows[] = $row;
 		}
 		return $rows;
@@ -38,6 +38,7 @@
 
 
 	function update($table,$array,$where=null){
+		$str = null;
 		foreach ($array as $key => $value) {
 			if($str==null){
 				$sep = "";
@@ -58,4 +59,9 @@
 		$sql = "delete from {$table} {$where}";
 		mysql_query($sql);
 		return mysql_affected_rows();
+	}
+
+	function getNum($sql){
+		$result = mysql_query($sql);
+		return mysql_num_rows($result);
 	}

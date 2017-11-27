@@ -15,3 +15,15 @@
 		$chars = str_shuffle($chars);
 		return substr($chars,0,$length);
 	}
+
+	function getUniName(){
+		return md5(uniqid(microtime(true),true));
+	}
+		//得到文件扩展名
+	function getExt($filename){
+		// return strtolower(end(explode(".",$filename)));
+		$array=explode(".", $filename);
+		$str=end($array);
+		$extstr=strtolower($str);
+		return $extstr;
+	}

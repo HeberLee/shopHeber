@@ -4,7 +4,7 @@
 	}
 
 	function checkLogined(){
-		if($_SESSION['adminId']=='' && $_COOKIE['adminId']==''){
+		if(!isset($_SESSION['adminId']) && !isset($_COOKIE['adminId'])){
 			mesAlert('请先登录','login.php');
 		}
 	}
@@ -33,4 +33,35 @@
 		else{
 			return $mes = "添加失败!</br><a href='addAdmin.php'>重新添加</a>";
 		}
+	}
+
+	function getAllAdmin(){
+		$sql = "select id,username,email from heber_admin";
+		if($rows = fetchAll($sql)){
+			return $rows;
+		}
+		else{
+			echo "error!could not get info";
+		}
+	}
+
+	function editAdmin($id){
+		$arr = $_POST;
+		if(update('heber_admin',$arr,"id = {$id}")){
+			return $mes = "修改成功!</br><a href='listAdmin.php'>查看列表</a>";
+		}
+		else{
+			return $mes = "修改失败!</br><a href='listAdmin.php'>查看列表</a>";
+		}
+
+	}
+
+	function delAdmin($id){
+		if(delete("heber_admin","id = {$id}")){
+			return $mes = "删除成功!</br><a href='listAdmin.php'>查看列表</a>";
+		}
+		else{
+			return $mes = "删除失败!</br><a href='listAdmin.php'>查看列表</a>";
+		}
+
 	}
