@@ -29,3 +29,8 @@
 		}
 
 	}
+
+	function getAllCate() {
+		$sql = "select id,cName from heber_cate order by id asc";
+		return fetchAll($sql);
+	}

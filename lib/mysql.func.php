@@ -65,3 +65,7 @@
 		$result = mysql_query($sql);
 		return mysql_num_rows($result);
 	}
+
+	function getInsertId(){
+		return mysql_insert_id();
+	}
